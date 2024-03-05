@@ -1,7 +1,15 @@
 const assert = require('assert');
 
 function all(promises){
-    return Promise.all(promises);
+    return new Promise((resolve, reject) => {
+        const results = new Array(promises.length);
+        promises.forEach((promise, index) => {
+            promise.then(result => {
+                results[index] = result;
+                resolve(results);
+            }).catch(reject);
+        });
+    });
 }
 
 assert.doesNotReject(
