@@ -1,6 +1,12 @@
 const assert = require('assert');
 
-const pSetTimeout = ms => new Promise(resolve => setTimeout(resolve, ms));
+//const pSetTimeout = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+function pSetTimeout(ms) {
+    //return new Promise(resolve => setTimeout(resolve, ms));
+    return new Promise(function(resolve){return setTimeout(resolve, ms)} );
+}
+
 
 function race(promises){
     return new Promise((resolve, reject) => {

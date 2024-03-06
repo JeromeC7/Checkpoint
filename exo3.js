@@ -1,8 +1,8 @@
 const assert = require('assert');
-function filterObject(objet, predicat){
+function filterObject(objet, predicate){
     const result = {};
     for(const [key, value] of Object.entries(objet)){
-        if (predicat(key, value)){
+        if (predicate(key, value)){
             result[key] = value;
         }
     }
